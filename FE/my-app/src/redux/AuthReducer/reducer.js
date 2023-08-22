@@ -1,7 +1,7 @@
 
 
 
-export const reducer = (state,{type,payload})=>{
+export const reducer = (state={},{type,payload})=>{
     switch(type){
         default: return state
     }
