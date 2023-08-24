@@ -1,0 +1,27 @@
+.bannerMain{
+    left: 0px;
+    margin-top: 30px;
+    /* width: 100%; */
+    background-color: #02a95c;
+    height: 300px;
+    color: white;
+     padding: 50px;
+}
+h3{
+      font-size: revert;
+   font-weight: revert;
+}
+  h1{
+      font-size: revert ;
+      font-size: revert;
+  }
+.bannerMain>div{
+    font-size: x-large;
+    font-weight: bolder;
+    
+}
+.bannerMain>h3{
+    
+    margin-bottom: -4px;
+  /* color: burlywood; */
+}
