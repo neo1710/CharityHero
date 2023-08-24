@@ -11,7 +11,6 @@ import {
 } from '@chakra-ui/react'
 const CreditCard = () => {
 
-
   const handlepayment=()=>{
 
   }
@@ -47,7 +46,7 @@ const CreditCard = () => {
 </FormControl>
     </div>
     <Button onClick={handlepayment} m={"1rem"}  w={"90%"} colorScheme='teal' variant='solid'>
-    Button
+    CLICK FOR FUND
   </Button>
     </div>
   )

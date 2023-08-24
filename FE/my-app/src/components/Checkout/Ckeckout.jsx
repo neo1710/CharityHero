@@ -16,8 +16,8 @@ const initialOptions = {
 }
 const Ckeckout = () => {
 const [checkOptinTrue,setcheckOptinTrue]=useState(initialOptions)
-const [bankName,setBankName]=useState("")
-
+const [bankName,setBankName]=useState({})
+console.log(bankName)
 
 const {Credit,BHIM,Banking,UPI}=checkOptinTrue
   return (
@@ -64,7 +64,7 @@ const {Credit,BHIM,Banking,UPI}=checkOptinTrue
   <img src={payment_optionImage} alt="" />
 </div>
 {Credit&&<CreditCard/>}
-{Banking&&(bankName?<NetBanking/>:<BankList setBankName={setBankName}  />)}
+{Banking&&((bankName.name&&bankName.image)?<NetBanking bankName={bankName} setBankName={setBankName} />:<BankList setBankName={setBankName}  />)}
 {BHIM&&<BhimUpi/>}
 {UPI&&<QRcode/>}
 </div>
