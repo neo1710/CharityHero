@@ -15,10 +15,16 @@ const BhimUpi = () => {
         phone:false,
         paytm:false
     })
-
+    const [upiId,setUpiID]=useState("")
     const handlepayment=()=>{
-        alert('hello world')
+if(upiId.length>4&&upiId.includes("@")){
+
+}
+else{
+
+        alert('Please fill you correct UPI ID')
     }
+  }
     const {google,phone,paytm}=IspayTrue
   return (
     <div className={Style.BhimUpi_Main}>
@@ -53,28 +59,28 @@ const BhimUpi = () => {
  {google&&<div className={Style.Upi_id}>
   <FormControl isRequired>
   <FormLabel>Inter your google Pay UPI ID</FormLabel>
-  <Input w={{ base: "70%", md: "60%", lg: "50%" }} placeholder='google Pay UPI ID' />
+  <Input onChange={e=>setUpiID(e.target.value)} value={upiId} w={{ base: "70%", md: "60%", lg: "50%" }} placeholder='google Pay UPI ID' />
 </FormControl>
 <Button onClick={handlepayment} mt={"1rem"}  w={{ base: "60%", md: "50%", lg: "40%" }} colorScheme='teal' variant='solid'>
-    Button
+CLICK FOR FUND
   </Button>
   </div>}
  {phone&&<div className={Style.Upi_id}>
   <FormControl isRequired>
   <FormLabel>Inter your Phone Pe UPI ID</FormLabel>
-  <Input w={{ base: "70%", md: "60%", lg: "50%" }} placeholder='Phone Pe UPI ID' />
+  <Input onChange={e=>setUpiID(e.target.value)} value={upiId} w={{ base: "70%", md: "60%", lg: "50%" }} placeholder='Phone Pe UPI ID' />
 </FormControl>
 <Button onClick={handlepayment} mt={"1rem"}  w={{ base: "60%", md: "50%", lg: "40%" }} colorScheme='teal' variant='solid'>
-    Button
+CLICK FOR FUND
   </Button>
   </div>}
  {paytm&&<div className={Style.Upi_id}>
   <FormControl isRequired>
   <FormLabel>Inter your Paytm UPI ID</FormLabel>
-  <Input w={{ base: "70%", md: "60%", lg: "50%" }} placeholder='Paytm UPI ID' />
+  <Input onChange={e=>setUpiID(e.target.value)} value={upiId} w={{ base: "70%", md: "60%", lg: "50%" }} placeholder='Paytm UPI ID' />
 </FormControl>
 <Button onClick={handlepayment} mt={"1rem"}  w={{ base: "60%", md: "50%", lg: "40%" }} colorScheme='teal' variant='solid'>
-    Button
+  CLICK FOR FUND
   </Button>
   </div>}
     </div>
