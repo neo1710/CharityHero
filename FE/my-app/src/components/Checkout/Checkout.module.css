@@ -79,8 +79,33 @@ justify-content: end;
 padding: .6rem;
 display: flex;
 margin-top: .7rem;
+background-color:#343F4F;
+padding:1rem;
+text-align:start;
 }
 
+.tagline{
+    font-size:30px;
+    font-weight:400;
+    color:#FFF;
+    position:relative;
+}
+/* .t_and_c>p:after{
+    border-left:2px solid red;
+    content:"";
+    position:absolute;
+    height:100%;
+    width:100%;
+
+animation:typing 1.5s steps(100) infinite;
+} */
+
+/* @keyframes typing{
+    100%{
+        left:100%;
+
+    }
+} */
 .Cancellation{
     display: flex;
     justify-content: space-between;
@@ -250,6 +275,7 @@ text-align: right;
         }
         .t_and_c{
             justify-content: center;
+            
         }
         .everyOption{
             flex-direction: column;
