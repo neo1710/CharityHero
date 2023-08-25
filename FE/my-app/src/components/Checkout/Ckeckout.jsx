@@ -69,10 +69,11 @@ const {Credit,BHIM,Banking,UPI}=checkOptinTrue
 {UPI&&<QRcode/>}
 </div>
       </div>
-
+    
       <div className={Style.t_and_c}>
-<p>By placing the order,I have read and agreed lenskart.com</p>
-<a href="#" style={{color:"#68ebed"}}>T&C</a>
+        {/* <h1>Hello,</h1> */}
+<p className={Style.tagline}>Come together to collectively global development and equality for all through charitable contributions</p>
+{/* <a href="#" style={{color:"#68ebed"}}>T&C</a> */}
       </div>
      <div className={Style.Cancellation}>
       <h1>Lenskart Assurance </h1>

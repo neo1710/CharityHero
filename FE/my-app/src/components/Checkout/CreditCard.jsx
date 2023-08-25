@@ -9,6 +9,14 @@ import {
   Input,
   Button,
 } from '@chakra-ui/react'
+
+const initialcreaditData={
+  name:"",
+  card_Number:"",
+  card_Cvv:"",
+  card_Expiry:"",
+  
+}
 const CreditCard = () => {
 
   const handlepayment=()=>{

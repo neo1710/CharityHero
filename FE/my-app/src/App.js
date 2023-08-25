@@ -1,9 +1,13 @@
 
 import './App.css';
-import Checkout from './components/Checkout/Ckeckout';
+// import Checkout from './components/Checkout/Ckeckout';
 import Footer from './components/Footer';
 import NavBar from './components/NavBar';
+
+// import Home from './pages/Home';
+
 import Home from './pages/Home';
+
 import AllRoutes from './routes/AllRoutes';
 
 function App() {
@@ -14,6 +18,7 @@ function App() {
   {/* <Checkout /> */}
   <AllRoutes/>
    <Home/>
+
    <Footer/>
 <Signup/>
     </div>
