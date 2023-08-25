@@ -17,10 +17,10 @@ function App() {
         <NavBar/>
   {/* <Checkout /> */}
   <AllRoutes/>
-   <Home/>
+   {/* <Home/> */}
 
    <Footer/>
-<Signup/>
+{/* <Signup/> */}
     </div>
   );
 }

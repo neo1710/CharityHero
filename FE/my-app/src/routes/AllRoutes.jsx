@@ -2,6 +2,9 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Checkout from '../components/Checkout/Ckeckout';
 import DonationDetails from "../pages/DonationDetails";
+import Requests from "../pages/Requests";
+import SingleRequestCard from "../components/Requests/SingleRequestCard";
+import UserPage from "../pages/UserPage";
 export default function AllRoutes(){
     return(
 
@@ -13,6 +16,7 @@ export default function AllRoutes(){
         <Route path="/requests" element={<Requests/>}/>
         <Route path="/requests/:id" element={<SingleRequestCard/>}/>
         <Route path="/user" element={<UserPage/>}/>
+        {/* <Route path="/user" element={<UserPage/>}/> */}
     </Routes>
   </>
 
