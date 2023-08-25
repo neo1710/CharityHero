@@ -34,7 +34,7 @@ export default function Requests(){
         matched: searchParams.get("matched") && true,
         raised: searchParams.get("raised") && 0,
         search:searchParams.get("search")||"",
-        limit:searchParams.get("limit")||10,
+        limit:searchParams.get("limit")||5,
         page:searchParams.get("page")||1
        }
 
