@@ -261,7 +261,7 @@ text-align: right;
 
 
 @media all and (min-width: 300px) and (max-width: 550px) {
-    .manege{
+  .manege{
         width: 95%;
 
     }
