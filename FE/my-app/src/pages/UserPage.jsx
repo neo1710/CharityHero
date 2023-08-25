@@ -78,7 +78,7 @@ export default function UserPage(){
     }
     const getReq = ()=>{
         axios.get(`https://ivory-ox-kilt.cyclic.cloud/donation`,{headers:{
-            Authorization: `Bearer ${JSON.parse(localStorage.get("token"))}`
+            Authorization: `Bearer ${JSON.parse((localStorage.getItem("token")))}`
         }}).then((res)=>{
             console.log(res)
             setData(res.data)
