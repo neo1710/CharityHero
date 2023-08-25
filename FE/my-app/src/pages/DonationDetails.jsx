@@ -24,7 +24,7 @@ const DonationDetails = () => {
     axios
       .get(`${BashURL}`)
       .then((res) => {
-        console.log(res);
+        console.log("res-->",res);
         setUserData(res.data);
       })
       .catch((err) => console.log("error", err));

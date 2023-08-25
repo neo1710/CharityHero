@@ -17,7 +17,10 @@ function App() {
         <NavBar/>
   {/* <Checkout /> */}
   <AllRoutes/>
+   {/* <Home/> */}
+
    <Footer/>
+{/* <Signup/> */}
     </div>
   );
 }
