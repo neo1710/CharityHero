@@ -1,0 +1,31 @@
+.bottom{
+    border: 1px solid gray;
+    background-color: rgb(245, 243, 240);
+    padding: 20px;
+    width: 80%;;
+    margin: auto;
+    height: auto;
+    display: flex;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+.bottom h1{
+    margin-top: 70px;
+    margin-left: 30px;
+}
+
+.bottom button{
+background-color: #02a95c ;
+border: 0px;
+padding: 10px 20px;
+ color: white;
+margin-left: 28px;
+margin-top: 10px;
+border-radius: 10px;
+}
+.bottom button:hover{
+      color: antiquewhite;
+    background-color: #12c571 ;
+}
+
+

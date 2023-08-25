@@ -1,23 +1,27 @@
 .checkout_main{
-    border: 2px solid red;
+    border: 0px solid red;
     margin:20px auto;
+    padding: 20px;
   
 }
 .manege{
     width: 60%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin: auto;
-    border: 2px solid green;
+    border: 0px solid green;
 }
 .payment_option{
 
-    border: 2px solid blue;
+    border: 0px solid blue;
     text-align: left;
     background-color:  #EEEEEE;
     padding: .6rem;
+    margin-bottom: 1rem;
     
 }
 
 .left{
+    /* box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px; */
 /* border: 2px solid blue; */
 display: flex;
 flex-direction: column;
@@ -43,7 +47,10 @@ gap: .1rem;
 }
 .right{
     width: 70%;
-    border: 2px solid blue;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px; */
+    border: 0px solid blue;
 
 }
 .secure{
@@ -51,6 +58,7 @@ gap: .1rem;
     gap: 2rem;
 }
 .secure_photo{
+    border-bottom:1px solid #4f676f;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,9 +71,10 @@ gap: .1rem;
     font-size: 14px;
     color: #4f676f;
     font-weight: 600;
+   
 }
 .t_and_c{
-border: 1px solid blue;
+border: 0px solid blue;
 justify-content: end;
 padding: .6rem;
 display: flex;
@@ -90,7 +99,7 @@ margin-top: .7rem;
 
 .multipleOption{
     display: flex;
-    border: 2px solid red;
+    border: 0px solid red;
     justify-content: space-around;
     align-items: center;
 }
@@ -101,7 +110,7 @@ width: 30%;
     display: flex;
     align-items: center;
     width: 30%;
-    border: 2px solid blue;
+    border: 0px solid blue;
     justify-content: space-between;
     cursor: pointer;
 }
@@ -135,7 +144,7 @@ width: 30%;
 }
 
 .QR_code{
-    border: 2px solid rgb(197, 9, 150);
+    border: 0px solid rgb(197, 9, 150);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -182,6 +191,32 @@ cursor: pointer;
     padding: 0px 8px;
 
     justify-content: space-between;
+}
+
+.nextSymboleLogo{
+    border: 0px solid green;
+    color: green;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: right;
+
+    padding: 0px 8px;
+    
+    justify-content: end;
+}
+.nextSymboleLogo1{
+    border: 0px solid green;
+    color: green;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: right;
+
+    padding: 0px 8px;
+}
+.nextSymboleLogo>img,.nextSymboleLogo1>img{
+    width: 20%;
 }
 .nextSymbole>p{
 font-size: 1.5rem;

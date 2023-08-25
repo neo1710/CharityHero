@@ -2,7 +2,8 @@ import React from 'react'
 import Style from './Checkout.module.css'
 import googlepay from '../../Images/googlepay.jpeg'
 import phonepe from '../../Images/phonepe.jpeg'
-import Paytmimg from '../../Images/phonepe.jpeg'
+import Paytmimg from '../../Images/paytm.jpeg'
+import { Button } from '@chakra-ui/react'
 
 
 function QRcode() {
@@ -52,6 +53,10 @@ function QRcode() {
       {paytm && <div className={Style.QR_code}>
         <img src={Paytmimg} alt="QR code" />
       </div>}
+
+      <Button   m={"1rem"}  w={"90%"} colorScheme='teal' variant='solid'>
+    GO BACK TO HOME PAGE
+  </Button>
     </div>
   )
 

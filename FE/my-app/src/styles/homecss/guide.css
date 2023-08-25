@@ -1,0 +1,67 @@
+.guideMain {
+    width: 80%;
+    margin: auto;
+    margin-top: 60px;
+}
+
+.guideMain h1 {
+    color: #02a95c;
+    font-size: revert;
+}
+
+
+.steps {
+    /* border: 1px solid #c5806a; */
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.steps>p {
+    color: gray;
+}
+
+.steps>div {
+    width: 33%;
+
+}
+
+.num {
+
+    text-align: center;
+    display: flex;
+    border-radius: 50%;
+    background-color: #02a95c;;
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    width: 40px;
+    height: 40px;
+
+}
+
+.num>div {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.hedG {
+    margin-top: 40px;
+    margin-bottom: -10px;
+    font-size: larger;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.steps>div {
+   
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+p{
+     color: gray;
+       padding: 10px;
+}
