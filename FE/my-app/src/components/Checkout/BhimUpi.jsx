@@ -35,7 +35,7 @@ else{
         paytm:false
     })}  className={Style.everyOption}>
     <img src="https://media6.ppl-media.com/mediafiles/ecomm/promo/1554965305_google-pay.png" alt="" />
-    <h1>Google Pay</h1>
+    <h2>Google Pay</h2>
     </div>
     <div  onClick={()=>setIsPayTrue({
         google:false,
@@ -44,7 +44,7 @@ else{
     })} className={Style.everyOption}>
 
     <img src="https://media6.ppl-media.com/mediafiles/ecomm/promo/1577193138_bhim-upi.png" alt="" />
-    <h1>Phone Pe</h1>
+    <h2>Phone Pe</h2>
     </div>
     <div onClick={()=>setIsPayTrue({
         google:false,
@@ -52,7 +52,7 @@ else{
         paytm:true
     })}  className={Style.everyOption}>
     <img src="https://media6.ppl-media.com/mediafiles/ecomm/promo/1558704583_paytmupi.png" alt="" />
-    <h1>Paytm</h1>
+    <h2>Paytm</h2>
     </div>
   </div>
 
