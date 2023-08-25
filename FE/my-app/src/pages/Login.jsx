@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
@@ -16,6 +16,8 @@ function doit(e){
     let data={email,password:pass}
  dispatch(loginReq(data));
  console.log(data);
+setEmail("");
+setPass("");
 }
 
   console.log({email,pass});
@@ -42,11 +44,14 @@ function doit(e){
 
 const DIV=styled.div`
 width :100% ;
+height: 500px;
+padding-top:150px;
 background-image: url('https://www.gofundme.com/en-gb/c/wp-content/uploads/sites/11/2021/04/hand-wing-people-love-heart-symbol-1361975-pxhere.com_.jpg?w=1024');
 div{
 width: 50%;
 box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 margin: auto;
+
 background-color: white;
 padding: 20px;
 }
