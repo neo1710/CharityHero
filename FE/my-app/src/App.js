@@ -15,6 +15,7 @@ function App() {
   <AllRoutes/>
    <Home/>
    <Footer/>
+<Signup/>
     </div>
   );
 }
