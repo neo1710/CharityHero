@@ -9,20 +9,52 @@ import {
   Input,
   Button,
   useStatStyles,
+  useDisclosure,
 } from '@chakra-ui/react'
+import {useSelector,useDispatch} from "react-redux"
+import AlertPopup from './AlertPopup'
+import { useNavigate } from 'react-router-dom'
+import { PostDonationData } from '../../redux/RequestReducer/action'
 
 const initialUserDetail={
   userName:"",
   password:""
 }
 const NetBanking = ({bankName,setBankName}) => {
-
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  //  const [cardData,setCardData]=React.useState(initialcreaditData)
   const [bankingdata,setBankingData]=useState(initialUserDetail)
-
-  console.log();
-
+ 
+   const allData=useSelector(store=>store.requestReducer)
+   console.log("allData",allData);
   const handlepayment=()=>{
+if(bankingdata.userName&&bankingdata.password){
+  const userData= JSON.parse(localStorage.getItem("userDetails"))||{}
+  let arr = new Date().toLocaleString().split(",").map((ele)=>ele.trim())
+  const DonerDetails={
+    donor:bankingdata.userName,
+    amount:userData.amount,
+    date:arr[0],
+    time:arr[1],
+    message:userData.message,
+    userID:userData.userID,
+    donationRequestID:userData._id,
+    phone:9569892524
 
+  }
+  dispatch(PostDonationData(DonerDetails))
+  setBankingData(initialUserDetail)
+  onOpen() 
+  
+  setTimeout(()=>{
+      navigate("/")
+  },5000)
+}
+else{
+  alert("Please fill all the fields")
+}
   }
   return (
     <div>
@@ -60,6 +92,7 @@ const NetBanking = ({bankName,setBankName}) => {
     <div style={{display:"flex"}}>
     <Button onClick={handlepayment} m={"1rem"}  w={"90%"} colorScheme='teal' variant='solid'>
     LOGIN
+    <AlertPopup onOpen={onOpen} isOpen={isOpen} onClose={onClose}/>
   </Button>
     <Button onClick={()=>setBankingData(initialUserDetail)}  m={"1rem"}  w={"90%"} colorScheme='teal' variant='solid'>
     RESET

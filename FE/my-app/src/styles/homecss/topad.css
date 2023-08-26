@@ -32,3 +32,23 @@ width: 100%;
     color: rgb(255, 255, 255);
     cursor: pointer;
 }
+
+
+/* For Small Screens */
+@media screen and (max-width: 480px) {
+    .topAd {
+        width: 100%;
+    }
+    
+    .topAd h1 {
+        margin-left: 0;
+        margin-top: 20px;
+        font-size: 20px;
+    }
+    
+    .topAd button {
+        margin-left: 0;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+}

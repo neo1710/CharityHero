@@ -1,4 +1,4 @@
-import { DONATED, DONATION_REQUEST, DONATION_REQUEST_FAILURE, DONATION_REQUEST_SUCCESS } from "../actionTypes"
+import { DONATED, DONATION_REQUEST, DONATION_REQUEST_FAILURE, DONATION_REQUEST_SUCCESS, POST_DONATION_SUCCESS } from "../actionTypes"
 const initState={
     isLoading:false,
     isError:false,
@@ -38,3 +38,4 @@ export const reducer = (state=initState,{type,payload})=>{
         default: return state
     }
 }
+

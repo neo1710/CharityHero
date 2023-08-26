@@ -21,7 +21,7 @@ console.log(bankName)
 
 const {Credit,BHIM,Banking,UPI}=checkOptinTrue
   return (
-    <div className={Style.checkout_main}>
+    <div className={Style.checkout_main} style={{border:"0px solid red",margin:"auto"}}>
       <div className={Style.manege}>
 
       <div className={Style.payment_option}>

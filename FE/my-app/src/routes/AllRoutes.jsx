@@ -8,6 +8,7 @@ import {Login} from '../pages/Login';
 import Home from "../pages/Home";
 import Checkout from '../components/Checkout/Ckeckout';
 import DonationDetails from "../pages/DonationDetails";
+
 import PrivateRoute from "./PrivateRoute";
 
 export default function AllRoutes(){
@@ -17,7 +18,7 @@ export default function AllRoutes(){
         <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Checkout/>} />
-        <Route path="/donait/:id" element={<DonationDetails/>} />
+        <Route path="/donate/:id" element={<DonationDetails/>} />
         <Route path="/requests" element={<Requests/>}/>
         <Route path="/requests/:id" element={<SingleRequestCard/>}/>
         <Route path="/user" element={<PrivateRoute><UserPage/></PrivateRoute>}/>

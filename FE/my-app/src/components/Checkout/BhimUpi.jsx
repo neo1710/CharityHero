@@ -8,8 +8,13 @@ import {
     FormHelperText,
     Input,
     Button,
+    useDisclosure,
   } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
+import AlertPopup from './AlertPopup'
 const BhimUpi = () => {
+  const navigate=useNavigate()
+  const { isOpen, onOpen, onClose } = useDisclosure()
     const [IspayTrue,setIsPayTrue]=useState({
         google:true,
         phone:false,
@@ -18,7 +23,11 @@ const BhimUpi = () => {
     const [upiId,setUpiID]=useState("")
     const handlepayment=()=>{
 if(upiId.length>4&&upiId.includes("@")){
-
+  setUpiID("")
+  onOpen()
+setTimeout(() => {
+  navigate("/")
+}, 5000);
 }
 else{
 
@@ -63,6 +72,7 @@ else{
 </FormControl>
 <Button onClick={handlepayment} mt={"1rem"}  w={{ base: "60%", md: "50%", lg: "40%" }} colorScheme='teal' variant='solid'>
 CLICK FOR FUND
+ <AlertPopup onOpen={onOpen} isOpen={isOpen} onClose={onClose}/>
   </Button>
   </div>}
  {phone&&<div className={Style.Upi_id}>
@@ -72,6 +82,7 @@ CLICK FOR FUND
 </FormControl>
 <Button onClick={handlepayment} mt={"1rem"}  w={{ base: "60%", md: "50%", lg: "40%" }} colorScheme='teal' variant='solid'>
 CLICK FOR FUND
+ <AlertPopup onOpen={onOpen} isOpen={isOpen} onClose={onClose}/>
   </Button>
   </div>}
  {paytm&&<div className={Style.Upi_id}>
@@ -81,6 +92,8 @@ CLICK FOR FUND
 </FormControl>
 <Button onClick={handlepayment} mt={"1rem"}  w={{ base: "60%", md: "50%", lg: "40%" }} colorScheme='teal' variant='solid'>
   CLICK FOR FUND
+   <AlertPopup onOpen={onOpen} isOpen={isOpen} onClose={onClose}/>
+
   </Button>
   </div>}
     </div>

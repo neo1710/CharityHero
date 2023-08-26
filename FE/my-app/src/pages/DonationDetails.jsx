@@ -12,26 +12,36 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import axios from "axios";
-const BashURL = "https://ivory-ox-kilt.cyclic.cloud/donation";
+const BashURL = "https://ivory-ox-kilt.cyclic.cloud/donation/request";
 const DonationDetails = () => {
   const { id } = useParams();
   const [amount, setAmount] = useState(0);
   const [message, setMessage] = useState("");
-  const [allUser,setAllUser]=useState([]);
+  const [allUser, setAllUser] = useState([]);
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
+
+  const token = JSON.parse(localStorage.getItem("token")) || "";
+  // console.log(token);
   useEffect(() => {
     axios
       .get(`${BashURL}`)
       .then((res) => {
-        console.log(res);
-        setUserData(res.data);
+        res.data.data?.forEach((el) => {
+          if (el._id == id) {
+            setUserData(el);
+          }
+        });
       })
       .catch((err) => console.log("error", err));
   }, []);
 
+  console.log("userData-->", userData);
   const handleNextPage = () => {
     if (amount > 0) {
+      userData.amount = +amount;
+      userData.message = message;
+      localStorage.setItem("userDetails", JSON.stringify(userData));
       navigate("/checkout");
     } else {
       alert("Please enter vailid amount");
@@ -43,23 +53,23 @@ const DonationDetails = () => {
       <div className="container">
         <div className="image-div">
           <div className="image-box">
-            <img src={userData.image} alt="photo" />
+            <img className="user-image" src={userData.image} alt="photo" />
           </div>
           <div className="for-help">
             <h6 style={{ marginBotton: "-5px" }}>
               {" "}
               You're supporting{" "}
-              <span className="span-1">{userData.title}</span>
+              <span className="span-1">{userData.organizationName}</span>
             </h6>
             <p>
-              Your donation will benifit{" "}
+              Your donation will benefit for{" "}
               <span className="span-2">{userData.name}</span>
             </p>
           </div>
         </div>
         <div className="donation-money">
           <FormControl isRequired>
-            <FormLabel>Enter your amount</FormLabel>
+            <FormLabel>Enter your donation</FormLabel>
             <Input
               placeholder="000000"
               value={amount}
@@ -83,7 +93,28 @@ const DonationDetails = () => {
         <div className="donation-button">
           <FormControl>
             {/* <FormLabel>Enter card number</FormLabel> */}
-            <Button onClick={handleNextPage} className="procced-btn">
+
+            {/* <Button
+              _hover={{
+                bg: "linear-gradient(0deg, #f8d46d 0%, #f4bd52 100%)",
+              }}
+              bg={"linear-gradient(180deg, #f8d46d 0%, #f4bd52 100%)"}
+            >
+              Share
+            </Button>
+            <Button
+              _hover={{
+                bg: "linear-gradient(0deg, #fdb833 0%, #f99b32 100%)",
+              }}
+              bg={"linear-gradient(180deg, #fdb833 0%, #f99b32 100%)"}
+            >
+              <Link to={`/donate/${data?._id}`}>Donate Now</Link>
+            </Button> */}
+
+            <Button  _hover={{
+                bg: "linear-gradient(0deg, #fdb833 0%, #f99b32 100%)",
+              }}
+              bg={"linear-gradient(180deg, #fdb833 0%, #f99b32 100%)"} onClick={handleNextPage} className="procced-btn">
               PROCEED FOR DONATE
             </Button>
           </FormControl>
@@ -114,11 +145,12 @@ const DIV = styled.div`
   .image-box {
     width: 20%;
     border: 0px solid green;
-    border-radius:50%;
+    /* border-radius:50%; */
   }
-  .image-box >img{
+  .user-image {
     width: 100%;
-  
+    border: 0px solid blue;
+    border-radius: 50%;
   }
   .for-help {
     border-bottom: 2px solid gray;
@@ -150,15 +182,29 @@ const DIV = styled.div`
     margin: 50px 10px;
     border: 0px solid blue;
   }
-  @media all and (min-width: 300px) and (max-width: 550px) {
+  @media all and (min-width: 550px) and (max-width: 850px) {
     .container {
-      width: 100%;
-      border: 2px solid blue;
+      width: 70%;
+      border: 0px solid blue;
     }
     .donation-message,
     .donation-money,
     .donation-button {
       width: 90%;
+    }
+  }
+  @media all and (min-width: 300px) and (max-width: 550px) {
+    .container {
+      width: 100%;
+      border: 0px solid blue;
+    }
+    .donation-message,
+    .donation-money,
+    .donation-button {
+      width: 90%;
+    }
+    .image-box {
+      width: 35%;
     }
   }
 `;

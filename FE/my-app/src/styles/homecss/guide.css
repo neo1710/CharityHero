@@ -65,3 +65,27 @@ p{
      color: gray;
        padding: 10px;
 }
+
+
+/* Media Query for Small Screens */
+@media screen and (max-width: 480px) {
+    .guideMain {
+        width: 100%;
+    }
+
+    .steps {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .steps>div {
+        width: auto;
+        flex: 0 0 100%;
+    }
+
+    .num {
+        width: 30px;
+        height: 30px;
+        font-size: medium;
+    }
+}
