@@ -39,15 +39,3 @@ export const reducer = (state=initState,{type,payload})=>{
     }
 }
 
-const InitialHistoryData={
-donateHistory:{}
-}
-
-export  const donateHistoryReducer=(state=InitialHistoryData,{type,payload})=>{
-switch (type) {
-    case POST_DONATION_SUCCESS: return {...state,donateHistory:payload}
-        
-default : return state
-}
-
-}

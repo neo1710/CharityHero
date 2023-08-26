@@ -27,13 +27,8 @@ const NetBanking = ({bankName,setBankName}) => {
   //  const [cardData,setCardData]=React.useState(initialcreaditData)
   const [bankingdata,setBankingData]=useState(initialUserDetail)
  
-   const allData=useSelector(store=>store.donateHistoryReducer)
+   const allData=useSelector(store=>store.requestReducer)
    console.log("allData",allData);
-  //  const {name,card_Number,card_Cvv,card_Expiry}=cardData
- 
-
-  // console.log();
-
   const handlepayment=()=>{
 if(bankingdata.userName&&bankingdata.password){
   const userData= JSON.parse(localStorage.getItem("userDetails"))||{}
@@ -41,11 +36,13 @@ if(bankingdata.userName&&bankingdata.password){
   const DonerDetails={
     donor:bankingdata.userName,
     amount:userData.amount,
-    data:arr[0],
+    date:arr[0],
     time:arr[1],
     message:userData.message,
     userID:userData.userID,
-    donationRequestID:userData._id
+    donationRequestID:userData._id,
+    phone:9569892524
+
   }
   dispatch(PostDonationData(DonerDetails))
   setBankingData(initialUserDetail)

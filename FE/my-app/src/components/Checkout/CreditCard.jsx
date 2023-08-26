@@ -30,7 +30,7 @@ const CreditCard = () => {
  const { isOpen, onOpen, onClose } = useDisclosure()
   const [cardData,setCardData]=React.useState(initialcreaditData)
 
-  const allData=useSelector(store=>store.donateHistoryReducer)
+  const allData=useSelector(store=>store.requestReducer)
   console.log("allData",allData);
   const {name,card_Number,card_Cvv,card_Expiry}=cardData
 
@@ -38,20 +38,31 @@ const CreditCard = () => {
   // console.log("Data and time",arr[0],arr[1])
   const handlepayment=()=>{
     if(name&&card_Number&&card_Cvv&&card_Expiry){
-
 const userData= JSON.parse(localStorage.getItem("userDetails"))||{}
 let arr = new Date().toLocaleString().split(",").map((ele)=>ele.trim())
+
+// donor: { type: String, required: true },
+// amount: { type: Number, required: true },
+// date: { type: String, required: true },
+// time: { type: String, required: true },
+// phone: { type: Number, required: true },
+// message: { type: String },
+// userID: { type: String, required: true },
+// donationRequestID: { type: String, required: true },
 const DonerDetails={
   donor:name,
   amount:userData.amount,
-  data:arr[0],
+  date:arr[0],
   time:arr[1],
   message:userData.message,
   userID:userData.userID,
-  donationRequestID:userData._id
+  donationRequestID:userData._id,
+  phone:9569892524
 }
+
 dispatch(PostDonationData(DonerDetails))
 setCardData(initialcreaditData)
+// dispatch({type:DONATED,payload:{id,amount}})
 onOpen() 
 
 setTimeout(()=>{

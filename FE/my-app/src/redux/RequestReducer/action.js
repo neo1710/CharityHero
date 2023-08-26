@@ -1,5 +1,5 @@
 import axios from "axios"
-import { DONATION_REQUEST, DONATION_REQUEST_FAILURE, DONATION_REQUEST_SUCCESS,POST_DONATION_SUCCESS } from "../actionTypes"
+import { DONATION_REQUEST, DONATION_REQUEST_FAILURE, DONATION_REQUEST_SUCCESS,DONATED } from "../actionTypes"
 
 export const getDonationRequestData=(payload)=> async (dispatch)=>{
     const queryObj={}
@@ -48,16 +48,11 @@ export const getDonationRequestData=(payload)=> async (dispatch)=>{
 // All Data ofter Checkout 
 
 export const PostDonationData=payload=> dispatch=>{
-
   axios.post("https://ivory-ox-kilt.cyclic.cloud/history/create",payload).then(res=>{
     console.log(res);
-    dispatch({type:POST_DONATION_SUCCESS,payload:res.data})
+    dispatch({type:DONATED,payload:{amaunt:res.data.amount,id:res.data._id}})
  }).catch(err=>{
     console.log("error")
  })
-        
-    
-    
-
 }
 

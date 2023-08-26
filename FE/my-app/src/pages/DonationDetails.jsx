@@ -17,31 +17,31 @@ const DonationDetails = () => {
   const { id } = useParams();
   const [amount, setAmount] = useState(0);
   const [message, setMessage] = useState("");
-  const [allUser,setAllUser]=useState([]);
+  const [allUser, setAllUser] = useState([]);
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
 
-  const token=JSON.parse(localStorage.getItem("token"))||""
+  const token = JSON.parse(localStorage.getItem("token")) || "";
   // console.log(token);
   useEffect(() => {
-    axios.get(`${BashURL}`)
+    axios
+      .get(`${BashURL}`)
       .then((res) => {
-  res.data.data?.forEach(el=>{
-    if(el._id==id){
-     setUserData(el)
-
-    }
-  })
+        res.data.data?.forEach((el) => {
+          if (el._id == id) {
+            setUserData(el);
+          }
+        });
       })
       .catch((err) => console.log("error", err));
   }, []);
 
-  console.log("userData-->",userData);
+  console.log("userData-->", userData);
   const handleNextPage = () => {
     if (amount > 0) {
-      userData.amount= +amount;
-      userData.message=message
-      localStorage.setItem("userDetails",JSON.stringify(userData))
+      userData.amount = +amount;
+      userData.message = message;
+      localStorage.setItem("userDetails", JSON.stringify(userData));
       navigate("/checkout");
     } else {
       alert("Please enter vailid amount");
@@ -59,11 +59,11 @@ const DonationDetails = () => {
             <h6 style={{ marginBotton: "-5px" }}>
               {" "}
               You're supporting{" "}
-              <span className="span-1">{userData.title}</span>
+              <span className="span-1">{userData.organizationName}</span>
             </h6>
             <p>
-              Your donation will benefit for {" "}
-              <span className="span-2">{userData.category}</span>
+              Your donation will benefit for{" "}
+              <span className="span-2">{userData.name}</span>
             </p>
           </div>
         </div>
@@ -93,7 +93,28 @@ const DonationDetails = () => {
         <div className="donation-button">
           <FormControl>
             {/* <FormLabel>Enter card number</FormLabel> */}
-            <Button onClick={handleNextPage} className="procced-btn">
+
+            {/* <Button
+              _hover={{
+                bg: "linear-gradient(0deg, #f8d46d 0%, #f4bd52 100%)",
+              }}
+              bg={"linear-gradient(180deg, #f8d46d 0%, #f4bd52 100%)"}
+            >
+              Share
+            </Button>
+            <Button
+              _hover={{
+                bg: "linear-gradient(0deg, #fdb833 0%, #f99b32 100%)",
+              }}
+              bg={"linear-gradient(180deg, #fdb833 0%, #f99b32 100%)"}
+            >
+              <Link to={`/donate/${data?._id}`}>Donate Now</Link>
+            </Button> */}
+
+            <Button  _hover={{
+                bg: "linear-gradient(0deg, #fdb833 0%, #f99b32 100%)",
+              }}
+              bg={"linear-gradient(180deg, #fdb833 0%, #f99b32 100%)"} onClick={handleNextPage} className="procced-btn">
               PROCEED FOR DONATE
             </Button>
           </FormControl>
@@ -126,13 +147,10 @@ const DIV = styled.div`
     border: 0px solid green;
     /* border-radius:50%; */
   }
-  .user-image{
+  .user-image {
     width: 100%;
-    border:0px solid blue;
+    border: 0px solid blue;
     border-radius: 50%;
-
- 
-  
   }
   .for-help {
     border-bottom: 2px solid gray;
@@ -185,7 +203,7 @@ const DIV = styled.div`
     .donation-button {
       width: 90%;
     }
-    .image-box{
+    .image-box {
       width: 35%;
     }
   }
