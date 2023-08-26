@@ -35,6 +35,11 @@ export const reducer = (state=initialSate,{type,payload})=>{
                     isLoading:true
                 }
             }
+            case 'LOGOUT_SUCCESS':{
+                return {
+                    ...initialSate
+                }
+            }
 
         default: return state
     }
