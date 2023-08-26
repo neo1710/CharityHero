@@ -29,3 +29,19 @@ border-radius: 10px;
 }
 
 
+/* Media Query for Small Screens */
+@media screen and (max-width: 480px) {
+    .bottom {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .bottom h1 {
+        margin-top: 20px;
+        font-size: 20px;
+    }
+    
+    .bottom button {
+        margin-left: 0;
+    }
+}

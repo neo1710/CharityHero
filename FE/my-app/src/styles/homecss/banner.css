@@ -25,3 +25,27 @@ h3{
     margin-bottom: -4px;
   /* color: burlywood; */
 }
+
+@media screen and (max-width: 480px) {
+  .bannerMain {
+      height: auto;
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 24px;
+  }
+
+  h3 {
+      font-size: 18px;
+  }
+
+  .bannerMain>div {
+      font-size: medium;
+      font-weight: normal;
+  }
+
+  .bannerMain>h3 {
+      margin-bottom: 0;
+  }
+}
