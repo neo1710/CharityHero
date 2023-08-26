@@ -291,7 +291,7 @@ text-align: right;
         }
         .right{
             width: 100%;
-            border: 2px solid blue;
+            border: 0px solid blue;
         
         }
         .left{

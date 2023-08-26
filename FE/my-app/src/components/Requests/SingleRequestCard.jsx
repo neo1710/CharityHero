@@ -185,7 +185,7 @@ const getMessageArray=(historyArr)=>{
                 <Text>₹{data?.raised} raised of ₹{data?.goal}</Text>
                 <Text>{historyData.length} donations</Text>
                 <Button>Share</Button>
-                <Button><Link to={"/donate/:id"}>Donate Now</Link></Button>
+                <Button><Link to={`/donate/${id}`}>Donate Now</Link></Button>
                 {/* map through historydata */}
                 <Flex gap={5}>
                 <Flex
