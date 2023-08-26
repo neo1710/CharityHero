@@ -65,6 +65,7 @@ setload(false)
         <AlertDescription color={'#02a95c'} maxWidth='sm'>
           Thanks for Signing up.
         </AlertDescription>
+      
       </Alert> : <div>
             <h1>Register Here</h1><br />
 <form >
