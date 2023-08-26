@@ -39,3 +39,22 @@ background-color: rgb(245, 243, 240);
     border-radius: 50%;
     margin: auto;
 }
+
+/* For Small Screens */
+@media screen and (max-width: 480px) {
+    .CBMain {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .CBMain>div {
+        width: calc(100% - 20px);
+        padding: 20px 10px;
+        font-size: medium;
+    }
+    
+    .CBMain>div:nth-child(1) {
+        width: calc(100% - 20px);
+        padding: 40px 10px;
+    }
+}

@@ -78,10 +78,10 @@ const ProductSlider = () => {
   ];
 
   return (
-    <Box className="product" ml="150px" width="80%">
+    <Box className="product" ml={{ base: '0', sm: '150px' }} width={{ base: '100%', sm: '80%' }}>
       <Slider {...settings}>
         {data.map((item, i) => (
-          <Box key={i} padding="20px">
+          <Box key={i}  padding={{ base: '10px', sm: '20px' }}>
             <img src={item.src} alt={item.title} style={{ borderRadius: '20px' }} />
             <Heading as="h4" size="sm" p="4px">
             {item.title}

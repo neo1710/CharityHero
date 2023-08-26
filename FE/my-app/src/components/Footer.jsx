@@ -64,11 +64,11 @@ export default function Footer() {
           templateColumns={{ sm: '1fr 1fr', md: '2fr 1fr 1fr 2fr' }}
           spacing={8}>
           <Stack spacing={6}>
-            <Box style={{display:"flex"}} >
-               <Box>
-               <Image src={logo} w={9} />
-               </Box>
-             <Box>  <span style={{ color: "#02a95c", fontSize: "20px", fontWeight: "bolder", padding: "10px 0px", marginRight: "10px" }}>CharityHero</span></Box>
+            <Box style={{display:"flex",width:"100px"}} >
+             
+               <Image src={logo} />
+              
+             
              
             </Box>
            
