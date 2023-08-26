@@ -4,15 +4,20 @@ import googlepay from '../../Images/googlepay.jpeg'
 import phonepe from '../../Images/phonepe.jpeg'
 import Paytmimg from '../../Images/paytm.jpeg'
 import { Button } from '@chakra-ui/react'
+import { useNavigate } from 'react-router-dom'
 
 
 function QRcode() {
-
+const navigate=useNavigate()
   const [IspayTrue, setIsPayTrue] = React.useState({
     google: true,
     phone: false,
     paytm: false
   })
+
+  const handleNAvigate=()=>{
+    navigate("/")
+  }
   const { google, phone, paytm } = IspayTrue
   return (
     <div className={Style.BhimUpi_Main}>
@@ -54,7 +59,7 @@ function QRcode() {
         <img src={Paytmimg} alt="QR code" />
       </div>}
 
-      <Button   m={"1rem"}  w={"90%"} colorScheme='teal' variant='solid'>
+      <Button onClick={handleNAvigate}  m={"1rem"}  w={"90%"} colorScheme='teal' variant='solid'>
     GO BACK TO HOME PAGE
   </Button>
     </div>
