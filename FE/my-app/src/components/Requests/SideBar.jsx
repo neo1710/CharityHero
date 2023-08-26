@@ -1,4 +1,4 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Input, InputGroup, InputRightElement, Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import {useSearchParams} from "react-router-dom"
 import {Search2Icon} from "@chakra-ui/icons"
@@ -10,14 +10,24 @@ export default function SideBar(){
     const [funded,setFunded] = useState(searchParams.get("matched")||false)
     const [zeroDonations, setZeroDonations] = useState(searchParams.get("raised")||false)
     const [searchInp,setSearchInp] = useState(searchParams.get("search")||"")
-  
+    const limit=searchParams.get("limit")||5
+    const page=searchParams.get("page")||1
     
     const [order,setOrder]=useState(searchParams.get("order")||"")
 
 
 
     const handleChange=(e)=>{
-        const {value,name}=e.target
+        let value;
+        let name;
+        if(!e.target){
+             value= e
+             name="goal"
+        }else{
+             value=e.target.value
+             name = e.target.name
+        }
+        
         
         if(name==="category"){
         let category2=[...category]
@@ -45,14 +55,14 @@ export default function SideBar(){
     }
 
     useEffect(()=>{
-        const paramObj={}
+        const paramObj={limit,page}
       paramObj.category=category
 
       if(order){
             paramObj.sort="goal"
             paramObj.order=order
         }
-    if(goal){
+    if(goal!==0){
         paramObj.goal = goal
     }
     if(funded===true){
@@ -66,38 +76,51 @@ export default function SideBar(){
     }
         setSearchParams(paramObj)
 
-    },[category,order,goal,zeroDonations,funded,searchInp])
+    },[category,order,goal,zeroDonations,funded,searchInp,page,limit])
 
     
    // console.log("order:",order, "gender:", gender,"category:" ,category, "color:",color)
     return (
         <>
-        <Flex borderRight={"1px solid gray"} gap={"10px"} direction={"column"} alignItems={"flex-start"} padding={"10px"} width={"30%"}>
-        <Flex width={"90%"} justifyContent={"space-between"} alignItems={"center"}>
+        <Flex borderRight={"1px solid gray"} gap={10} direction={"column"} alignItems={"flex-start"} padding={"10px"} width={"30%"}>
+            <Flex direction={"column"} width={"90%"} gap={3}>
+            <Flex width={"90%"} justifyContent={"space-between"} alignItems={"center"}>
             <h3>Search According to Title</h3>
-            <Search2Icon/>
+     
             </Flex>
             <div>
-                <input type="text" placeholder="type something..." value={searchInp} name="search" onChange={handleChange}/>
+                <InputGroup>
+                <InputRightElement><Search2Icon/></InputRightElement>
+                <Input type="text" placeholder="type something..." value={searchInp} name="search" onChange={handleChange}/>
+                </InputGroup>
             </div>
+            </Flex>
+
+        <Flex direction={"column"} width={"90%"}>
         <Flex width={"90%"} justifyContent={"space-between"} alignItems={"center"}>
             <h3>AMOUNT NEEDED</h3>
             <Search2Icon/>
             </Flex>
-            <div onChange={handleChange}>
-            <input type="radio" value={1} name="goal" checked={goal===1}/>
+            <RadioGroup defaultValue={0} onChange={handleChange}>
+            <Stack direction={"column"}>
+                <Radio type="radio" value={0} name="goal"/>
+                <label>Show All</label>
+            <Radio type="radio" value={1} name="goal" checked={goal===1}/>
             <label>50 and under</label>
-            <input type="radio" value={2} name="goal" checked={goal===2}/>
+            <Radio type="radio" value={2} name="goal" checked={goal===2}/>
             <label>100 and under</label>
-            <input type="radio" value={3} name="goal" checked={goal===3}/>
+            <Radio type="radio" value={3} name="goal" checked={goal===3}/>
             <label>250 and under</label>
-            <input type="radio" value={4} name="goal" checked={goal===4}/>
+            <Radio type="radio" value={4} name="goal" checked={goal===4}/>
             <label>500 and under</label>
-            <input type="radio" value={5} name="goal" checked={goal===5}/>
+            <Radio type="radio" value={5} name="goal" checked={goal===5}/>
             <label>1000 and under</label>
-            <input type="radio" value={6} name="goal" checked={goal===6}/>
+            <Radio type="radio" value={6} name="goal" checked={goal===6}/>
             <label>Over 1000</label>
-            </div>
+            </Stack>
+            </RadioGroup>
+        </Flex>
+   
             <Flex width={"90%"} justifyContent={"space-between"} alignItems={"center"}>
             <h3>TOPIC</h3>
             <Search2Icon/>
