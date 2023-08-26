@@ -1,15 +1,24 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { loginReq } from '../redux/AuthReducer/action';
 
   export const Login=()=>{
   const [email,setEmail]=useState("");
   const [pass,setPass]=useState("");
+  let navigate=useNavigate();
+  let location=useLocation();
+  console.log('loc',location)
   let check=useSelector((store)=>store.authReducer);
   console.log(check);
 let dispatch=useDispatch()
+useEffect(()=>{
+if(check.isAuth===true){
+navigate(location.state);
+}
+},[check])
+
 
 function doit(e){
     e.preventDefault();
