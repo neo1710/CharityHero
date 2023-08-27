@@ -1,4 +1,5 @@
-import { DONATED, DONATION_REQUEST, DONATION_REQUEST_FAILURE, DONATION_REQUEST_SUCCESS, POST_DONATION_SUCCESS } from "../actionTypes"
+import axios from "axios"
+import { DONATED, DONATION_REQUEST, DONATION_REQUEST_FAILURE, DONATION_REQUEST_SUCCESS } from "../actionTypes"
 const initState={
     isLoading:false,
     isError:false,
@@ -28,14 +29,22 @@ export const reducer = (state=initState,{type,payload})=>{
                   }
                 : ele
         );
+        const updatedRequest = updatedRequests.find((ele) => ele._id === payload.id);
 
-        // Send a patch request with the updated ele to the server endpoint here
-        // You'll need to use a library like Axios or fetch to perform the HTTP request
-
+        // Send a patch request with the updated request to the server endpoint
+        axios.patch(`https://ivory-ox-kilt.cyclic.cloud/donation/edit/${payload.id}`, updatedRequest)
+             .then(response => {
+                 console.log('PATCH request successful', response.data);
+                 // You can perform additional actions if needed
+             })
+             .catch(error => {
+                 console.error('PATCH request error', error);
+                 // Handle the error if the PATCH request fails
+             });
+    
         return { ...state, requests: updatedRequests };
         }
         
         default: return state
     }
 }
-

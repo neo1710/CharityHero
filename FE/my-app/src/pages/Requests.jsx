@@ -20,7 +20,8 @@ export default function Requests(){
     const [searchParams,setSearchParams]=useSearchParams()
     const dispatch = useDispatch()
     const [page,setPage] = useState(searchParams.get("page")||1)
-    
+
+
     const arr = new Array(totalButtons).fill(null)
   
     const handlePageClick = (val)=>{
@@ -35,10 +36,11 @@ export default function Requests(){
         raised: searchParams.get("raised") && 0,
         search:searchParams.get("search")||"",
         limit:searchParams.get("limit")||5,
-        page:searchParams.get("page")||1
+         page:searchParams.get("page")||1
        }
 
     useEffect(()=>{
+        window.scrollTo(0, 0);
         dispatch(getDonationRequestData(paramObj))
     },[searchParams])
 
@@ -70,42 +72,50 @@ export default function Requests(){
        setSearchParams(manageParams)
     },[page])
 
-  //categories, search not working
+
   //loaders, scroll to top
 
 //{title,_id,description,goal,date,userID,category,organizationName,name,image,raised,matched}
     return (
-        <Box>
-        <Flex direction={"row"}>
+        <Box p={5}  bg={"white"} mt={10} mb={10}>
+        <Flex direction={{base:"column",sm:"column",md:"row"}}>
              <SideBar/>
              <Flex direction={"column"}>
              {reqData?.map((ele)=>(
-                <Link to={`/requests/${ele._id}`}>
-                 <Box as={Flex} padding={10} gap={10} justifyContent={"flex-start"} width={"70%"}>
-            <Image width={"250px"} height={"200px"} src={ele.image}/>
+            
+                 <Box as={Flex} flexDirection={{base:"column",sm:"column",md:"row"}} padding={10} gap={10} justifyContent={"flex-start"} width={"100%"}>
+            <Image borderRadius={10} boxShadow="0px 7px 29px 0px rgba(100, 100, 111, 0.2)" width={"250px"} height={"200px"} src={ele.image}/>
             <Flex direction={"column"} justifyContent={"space-evenly"} alignItems={"flex-start"} textAlign={"left"}>
-                <Heading>{ele.title}</Heading>
+                <Heading size={"md"} color={"#01a95d"}>{ele.title}</Heading>
                 {/* <Text>{ele.description.slice(0,300)}</Text> */}
                 <Flex direction={"column"}>
                 <Progress value={Math.floor((ele.raised/ele.goal)*100)} size='xs' color='#01a95d' />
-                <Text>₹{ele.raised} raised of ₹{ele.goal}</Text>
+                <Text><Box as="span" color={"black"} fontSize={"25px"} fontWeight={"medium"}>₹{ele?.raised} </Box>raised of ₹{ele?.goal} goal</Text>
+                {/* <Text color={"black"}>₹{ele.raised} raised of ₹{ele.goal}</Text> */}
                 </Flex>
-                <Button><Link to={`requests/${ele._id}`}>Donate Now</Link></Button>
+                <Link to={`/requests/${ele._id}`}>  <Button width={"200px"} height={"45px"} color={"black"} fontWeight={"bold"} bg={"#feb72e"} _hover={{ bg: "rgba(250, 193, 77, 0.8)" }}>See more</Button></Link>
             </Flex>
             
             </Box>
-                </Link>
+
           
           ))}
              </Flex>
         </Flex>
-        {arr.map((_,ind)=>(
+        <Flex width={"100%"} margin={"auto"}>
+            {/* <Button margin={"auto"} onClick={()=> testingPage>=arr.length && testingPage>=1 ? setTestingPage(testingPage-1):  setTestingPage(testingPage+1)} border={"1px solid #04a95d"} color={"#04a95d"} fontWeight={"bold"}>{testingPage>=arr.length? "Show less":"Show more"}</Button> */}
+            <Flex gap={3} margin={"auto"}>
+            {arr.map((_,ind)=>(
         <PaginationButtons
         key={ind+1}
         val={ind+1}
         handlePageClick={handlePageClick}
         />
       ))}
+            </Flex>
+   
+        </Flex>
+    
         </Box>
     )
 }

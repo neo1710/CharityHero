@@ -1,7 +1,8 @@
+
 import { Box, Button, Flex, FormControl, FormLabel, Heading, Image, Input, Progress, Select, Stack, Text, useEditableState } from "@chakra-ui/react"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { shallowEqual, useDispatch, useSelector } from "react-redux"
 
 const initState ={
     title:"",
@@ -38,6 +39,13 @@ export default function UserPage(){
     const [formData,setFormData]= useState(initState)
     const [addFormData,setAddFormData] = useState(createState)
 
+    const {username,orgName} = useSelector((store)=>{
+        return {
+            username: store.authReducer.username,
+            orgName:store.authReducer.orgName
+        }
+    },shallowEqual)
+   
     const [data,setData] = useState([])
     const dispatch = useDispatch()
 
@@ -70,7 +78,7 @@ export default function UserPage(){
             }
         }).catch((error)=>{
             if(error.response?.data?.error==="token expired"){
-              //  dispatch({type:LOGOUT})
+            //    dispatch({type:LOGOUT})
                 alert("Your session has expired. Please log in again.");
             }
             console.log(error)
@@ -78,7 +86,7 @@ export default function UserPage(){
     }
     const getReq = ()=>{
         axios.get(`https://ivory-ox-kilt.cyclic.cloud/donation`,{headers:{
-            Authorization: `Bearer ${JSON.parse((localStorage.getItem("token")))}`
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`
         }}).then((res)=>{
             console.log(res)
             setData(res.data)
@@ -142,19 +150,28 @@ export default function UserPage(){
             }
         })
     }
+    
+//--> logout action
+//--> check if the crud operations are actually working
+//--> need username, org name in response after login
+//--> req.body.name instead of req.body.user in auth middleware because the schema has name instead of user key
+//--> change date type to string in history schema
 
     return (
-        <Box>
-            <Heading>Username</Heading>
-            <Heading>Total Requests: {data.length}</Heading>
-            <Heading>Active Requests: {data.filter((ele)=>ele.matched===true).length}</Heading>
-            <Heading>Organization name</Heading>
-        <Flex direction={{base:"column", sm:"column",md:"row"}}>
-            <Flex direction={"column"}>
+        <Box p={10}>
+            <Flex direction={{base:"column",sm:"column",md:"row"}} gap={{base:0,sm:0,md:10}}>
+            <Heading size={"md"}>{username||"username"}</Heading>
+            <Heading size={"md"}>Total Requests: {data.length}</Heading>
+            <Heading size={"md"}>Active Requests: {data?.filter((ele)=>ele.matched===true).length}</Heading>
+            <Heading size={"md"}>{ orgName|| "Organization name"}</Heading>
+            </Flex>
+        <Flex direction={{base:"column", sm:"column",md:"row"}} gap={10}>
+            <Flex direction={"column"} width={{base:"100%",sm:"90%",md:"40%"}}>
                 {/* update */}
-      <Flex p={8} flex={1} align={"center"} justify={"center"}>
-        <Stack spacing={4} w={"full"} maxW={"md"} mt={10}>
-          <Heading fontSize={"2xl"} color={"#01D5A2"}>UPDATE REQUEST</Heading>
+      {/* <Flex  p={8} flex={1} align={"center"} justify={"center"}> */}
+     <Flex padding={{base:0,sm:10,md:10}} borderRadius={10} boxShadow={{base:"none",sm:"none",md:"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}} mt={10}>
+        <Stack spacing={4} w={"full"}>
+          <Heading fontSize={"2xl"} color={"#01a95d"}>UPDATE REQUEST</Heading>
           <FormControl id="title">
            
             <Input type="text" value={formData.title} onChange={(e)=>{setFormData({...formData,title:e.target.value})}}/>
@@ -192,13 +209,15 @@ export default function UserPage(){
           <Input type="text" value={formData.matched ? "Yes":"Not Yet"} />
           <FormLabel>Fully Funded</FormLabel>
           </FormControl>
-          <Button onClick={()=>{handleUpdateRequest(formData._id,{...formData,goal:Number(formData.goal),raised:Number(formData.raised)})}}>Update Request</Button>
+          <Button margin={"auto"} width={{base:"50%",sm:"250px",md:"250px"}} _hover={{
+    bg: "linear-gradient(0deg, #f8d46d 0%, #f4bd52 100%)"}} bg={"linear-gradient(180deg, #f8d46d 0%, #f4bd52 100%)"} onClick={()=>{handleUpdateRequest(formData._id,{...formData,goal:Number(formData.goal),raised:Number(formData.raised)})}}>Update Request</Button>
         </Stack>
-      </Flex>
+        </Flex>
+      {/* </Flex> */}
 {/* create */}
-<Flex p={8} flex={1} align={"center"} justify={"center"}>
-        <Stack spacing={4} w={"full"} maxW={"md"} mt={10}>
-          <Heading fontSize={"2xl"} color={"#01D5A2"}>CREATE A REQUEST</Heading>
+<Flex padding={{base:0,sm:10,md:10}} borderRadius={10} boxShadow={{base:"none",sm:"none",md:"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}} mt={10}>
+        <Stack spacing={4} w={"full"}>
+          <Heading fontSize={"2xl"} color={"#01a95d"}>CREATE A REQUEST</Heading>
           <FormControl id="title">
            
             <Input type="text" value={addFormData.title} onChange={(e)=>{setAddFormData({...addFormData,title:e.target.value})}}/>
@@ -236,23 +255,26 @@ export default function UserPage(){
           <Input type="text" value={"Not Yet"} />
           <FormLabel>Fully Funded</FormLabel>
           </FormControl>
-          <Button onClick={()=>{handleAddRequest({...addFormData,goal:Number(addFormData.goal),raised:0,date:new Date().toLocaleString().split(",").map((ele)=>ele.trim())[0],matched:false})}}>Create Request</Button>
+          <Button margin={"auto"} width={{base:"50%",sm:"250px",md:"250px"}} _hover={{
+    bg: "linear-gradient(0deg, #fdb833 0%, #f99b32 100%)"}} bg={"linear-gradient(180deg, #fdb833 0%, #f99b32 100%)"} onClick={()=>{handleAddRequest({...addFormData,goal:Number(addFormData.goal),raised:0,date:new Date().toLocaleString().split(",").map((ele)=>ele.trim())[0],matched:false})}}>Create Request</Button>
         </Stack>
       </Flex>
             </Flex>
             <Flex direction={"column"}>
                 {/* map through requests array */}
-                {data.map((ele)=>(
-                                  <Box as={Flex} padding={10} gap={10} justifyContent={"flex-start"} width={"70%"}>
-                                  <Image width={"250px"} height={"200px"} src={ele.image}/>
+                {data?.map((ele)=>(
+                                  <Box as={Flex} padding={10} gap={10} direction={{ base:"column",sm:"column",md:"row"}} justifyContent={"flex-start"} width={"100%"}>
+                                  <Image borderRadius={10} boxShadow="0px 7px 29px 0px rgba(100, 100, 111, 0.2)" width={"250px"} height={"200px"} src={ele.image}/>
                                   <Flex direction={"column"} justifyContent={"space-evenly"} alignItems={"flex-start"} textAlign={"left"}>
-                                      <Heading>{ele.title}</Heading>
-                                      <Flex direction={"column"}>
+                                      <Heading color={"#01a95d"} size={"md"}>{ele.title}</Heading>
+                                      <Flex direction={"column"} mt={1}>
                                       <Progress value={Math.floor((ele.raised/ele.goal)*100)} size='xs' color='#01a95d' />
-                                      <Text>₹{ele.raised} raised of ₹{ele.goal}</Text>
+                                      <Text><Box as="span" color={"black"} fontSize={"25px"} fontWeight={"medium"}> ₹{ele.raised}</Box> raised of ₹{ele.goal}</Text>
                                       </Flex>
-                                      <Button onClick={()=>handleEditClick(ele)}>Edit Request</Button>
-                                      <Button onClick={()=>handleDeleteRequest(ele._id)}>Delete Request</Button>
+                                      <Flex direction={"column"} gap={2}>
+                                      <Button border={"1px solid #04a95d"} color={"#04a95d"} fontWeight={"bold"} background={"transparent"} onClick={()=>handleEditClick(ele)}>Edit Request</Button>
+                                      <Button onClick={()=>handleDeleteRequest(ele._id)}  border={"1px solid #b5b6b6"} background={"transparent"} color={"black"}>Delete Request</Button>
+                                      </Flex>
                                   </Flex>
                                   
                                   </Box>
