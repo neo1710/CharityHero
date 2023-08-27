@@ -1,13 +1,10 @@
-import { shallowEqual, useSelector } from "react-redux"
-import { Navigate, useLocation } from "react-router-dom"
+
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useLocation, Navigate} from "react-router-dom";
 
 export default function PrivateRoute({children}){
-    const location = useLocation()
-
-    const {isAuth} = useSelector((store)=>{
-        return {
-            isAuth: store.authReducer.isAuth
-        }
-    },shallowEqual)
-   return isAuth ? children : <Navigate to={"/login"} state={location.pathname} replace={true}/>
+    let auth=useSelector((store)=>store.authReducer.isAuth);
+    let path=useLocation();
+      return auth? children:<Navigate to={'/login'} state={path.pathname} replace={false} /> 
 }

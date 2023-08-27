@@ -31,8 +31,8 @@ const AlertPopup = ({ isOpen, onOpen, onClose }) => {
           <AlertDialogHeader></AlertDialogHeader>
           <AlertDialogCloseButton />
           <AlertDialogBody fontSize={25} fontWeight={600} color={"green"}>
-          Thank you! your donation  
- successful received. Now you can view this impactful contribution on your history page.
+          Thank you for your contribution!
+           your donation successful received. 
           </AlertDialogBody>
           <AlertDialogFooter>
             {/* <Button ref={cancelRef} onClick={onClose}>

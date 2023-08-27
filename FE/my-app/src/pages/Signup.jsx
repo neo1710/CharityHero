@@ -14,5 +14,9 @@ export const Signup=()=>{
 
 const DIV=styled.div`
 width :100% ;
-background-image: url('https://www.gofundme.com/en-gb/c/wp-content/uploads/sites/11/2021/04/hand-wing-people-love-heart-symbol-1361975-pxhere.com_.jpg?w=1024');
+font-family: 'Poppins', sans-serif;
+height: 500px;
+padding-top:100px;
+background-color: #02a95c;
+/* background-image: url('https://mir-s3-cdn-cf.behance.net/projects/808/f3eb58157538329.Y3JvcCwxMDA3LDc4OCwxOTcsMA.jpg'); */
 `
