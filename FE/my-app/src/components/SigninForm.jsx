@@ -18,11 +18,11 @@ import {
   let [bool,setBool]=useState(false);
   let [load,setload]=useState(false);
   let [err,setErr]=useState(false);
-  let navigate=useNavigate()
+ let navigate=useNavigate();
   useEffect(()=>{
 if(bool){
   setTimeout(() => {
-    navigate('/login');
+   navigate('/login'); 
   }, 2000);
 
 }
