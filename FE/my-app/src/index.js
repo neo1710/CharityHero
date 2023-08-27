@@ -6,11 +6,36 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import { ChakraProvider } from '@chakra-ui/react'
-
+import { ChakraProvider,extendTheme } from '@chakra-ui/react'
+const customTheme = extendTheme({
+  components: {
+    Progress: {
+      baseStyle: {
+        filledTrack: {
+          bg: '#01a95d'
+        },
+        track:{
+          bg:"#e6f6ef"
+        }
+      }
+    },  Radio: {
+      baseStyle: {
+        icon: {
+          // Change the color of the radio button itself
+          color: 'red',
+        },
+        label: {
+          // Change the color of the label text
+          color: 'black',
+        },
+      },
+      // ... other variants if needed
+    }
+  }
+})
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <ChakraProvider>
+  <ChakraProvider theme={customTheme}>
   <Provider store={store}>
     <BrowserRouter>
       <App />
