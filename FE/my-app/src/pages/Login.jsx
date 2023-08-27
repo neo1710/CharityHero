@@ -24,9 +24,12 @@ let dispatch=useDispatch()
 useEffect(()=>{
 if(check.isAuth===true){
   setTimeout(()=>{
+    if(location.state){
 navigate(location.state);
+    }else{
+navigate('/');
+    }
   },2000)
-
 }
 },[check])
 
@@ -70,9 +73,11 @@ setPass("");
          <label >Password</label><br />
          <input value={pass} onChange={(e)=>{setPass(e.target.value)}}
          type="password" required placeholder="password"/><br />
-         <button type='submit' onClick={(e)=>{doit(e)}}>SUBMIT</button>
+         <button type='submit' onClick={(e)=>{doit(e)}}>SUBMIT</button>  
+
 </form>
 <a>if you are not a user <Link to='/signup' className='link'>register here</Link> </a>
+{/* {check.isLoading?  <Spinner size={'xs'} />:""} */}
         </div>
         </DIV>}
         </>
