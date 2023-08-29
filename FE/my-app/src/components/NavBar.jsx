@@ -7,11 +7,14 @@ import {
 import {  BiUser } from "react-icons/bi";
 import logo from "../Images/logo.jpeg"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/AuthReducer/action';
 
 const Links = ['login', 'ForCharity', 'ForIndivuals'];
 
 const NavLink = (props) => {
   const { children } = props;
+
 
   return (
     <Box
@@ -31,6 +34,13 @@ const NavLink = (props) => {
 };
 export default function NavBar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
+    let data=useSelector((store)=>store.authReducer);
+    let dispatch=useDispatch(); 
+console.log(data);
+    function out(){
+      dispatch(logout())
+    }
+
     return (
         <>
               <Box bg='white' w="100%" p={2} color='black' boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"  position="sticky" // Add sticky position
@@ -81,17 +91,17 @@ export default function NavBar() {
                         style={{ width: "100px" }}
                         display={{md:"flex",sm:"none"}}
                     >
-                        <Link to="/">For Charity</Link>
+                        <Link to="/requests">For Charity</Link>
                     </Box>
-                    <Box
+                  {data.isAuth?  <Box
                         _hover={{
                             background: "white",
                             color: "#02a95c",
                         }}
                         style={{  width: "140px" }}
                     >
-                        <Link to="/">For Individuals</Link>
-                    </Box>
+                        <Link to="/user">Your Requests</Link>
+                    </Box>:""}
                 </Box>
 
                 <Box display={{ base: 'none', md: 'flex' }} alignItems="center" mt={{ base: 4, md: 0 }}> {/* Adjusted alignment */}
@@ -104,7 +114,14 @@ export default function NavBar() {
                             border="none"
                             m={2}
                         />
-                        <Link to="/login">
+                     {data.isAuth?
+                            <button
+                            onClick={()=>{out()}}
+                               style={{backgroundColor:"red", border:"solid 2px black"}}
+                            >
+                                Logout
+                            </button>
+                        :   <Link to="/login">
                             <span
                                 as={IconButton}
                                 aria-label='Options'
@@ -118,7 +135,7 @@ export default function NavBar() {
                             >
                                 Login
                             </span>
-                        </Link>
+                        </Link>}
                     </Menu>
                 </Box>
             </Flex>
