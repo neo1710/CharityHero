@@ -16,7 +16,10 @@ console.log(err);
 
 export const logout=()=>(dispatch)=>{
     dispatch({type:"LOGIN_REQUEST"});
-axios.get(`https://ivory-ox-kilt.cyclic.cloud/user/logout`).then((res)=>{
+   let token= localStorage.getItem('token');
+axios.get(`https://ivory-ox-kilt.cyclic.cloud/user/logout`,{
+    headers:{Authorization:`Bearer ${token}`}
+}).then((res)=>{
  console.log(res);   
 dispatch({type:"LOGOUT_SUCCESS"});
 }).catch((err)=>{

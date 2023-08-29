@@ -63,7 +63,7 @@ setPass("");
           Thanks for logging in.
         </AlertDescription>
       </Alert>:  <DIV>
-    
+    {/* {check.isLoading? <div><Spinner size={'xs'} /></div> :""} */}
        <div>
             <h1>LOGIN HERE</h1><br />
 <form >
@@ -76,8 +76,8 @@ setPass("");
          <button type='submit' onClick={(e)=>{doit(e)}}>SUBMIT</button>  
 
 </form>
-<a>if you are not a user <Link to='/signup' className='link'>register here</Link> </a>
-{/* {check.isLoading?  <Spinner size={'xs'} />:""} */}
+<a>If you are not a user <Link to='/signup' className='link'>register here</Link> </a>
+
         </div>
         </DIV>}
         </>
