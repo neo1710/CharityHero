@@ -117,7 +117,7 @@ console.log(data);
                      {data.isAuth?
                             <button
                             onClick={()=>{out()}}
-                               style={{backgroundColor:"#02a95c", border:"solid 2px #02a95c"}}
+                               style={{backgroundColor:"#02a95c", border:"solid 2px #02a95c",borderRadius:"5px",padding:"5px"}}
                             >
                                 Logout
                             </button>
