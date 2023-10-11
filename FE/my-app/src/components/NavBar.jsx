@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/AuthReducer/action';
 
-const Links = ['login', 'ForCharity', 'ForIndivuals'];
+const Links = ['login', 'ForCharity'];
 
 const NavLink = (props) => {
   const { children } = props;
@@ -36,7 +36,7 @@ export default function NavBar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     let data=useSelector((store)=>store.authReducer);
     let dispatch=useDispatch(); 
-console.log(data);
+// console.log(data);
     function out(){
       dispatch(logout())
     }
@@ -68,6 +68,7 @@ console.log(data);
                     <InputLeftElement
                         variant='outline'
                         border="none"
+                        ml="260px"
                         children={
                             <IconButton
                                 size='sm'
@@ -104,7 +105,10 @@ console.log(data);
                     </Box>:""}
                 </Box>
 
-                <Box display={{ base: 'none', md: 'flex' }} alignItems="center" mt={{ base: 4, md: 0 }}> {/* Adjusted alignment */}
+                <Box    _hover={{
+                                 
+                                    color: "#02a95c",
+                                }} display={{ base: 'none', md: 'flex' }} alignItems="center" mt={{ base: 4, md: 0 }}> {/* Adjusted alignment */}
                     <Menu>
                         <MenuButton
                             as={IconButton}
@@ -121,7 +125,7 @@ console.log(data);
                             >
                                 Logout
                             </button>
-                        :   <Link to="/login">
+                        :   <Link to="/login" >
                             <span
                                 as={IconButton}
                                 aria-label='Options'
@@ -129,9 +133,7 @@ console.log(data);
                                 variant='outline'
                                 border="none"
                                 m={2}
-                                _hover={{
-                                    color: "#02a95c",
-                                }}
+                             
                             >
                                 Login
                             </span>
