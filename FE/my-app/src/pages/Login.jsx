@@ -8,6 +8,7 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  Input,
   Spinner,
 } from "@chakra-ui/react";
 
@@ -72,26 +73,26 @@ export const Login = () => {
             <form>
               <label>Email</label>
               <br />
-              <input
+              <Input
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
                 type="text"
                 required
-                placeholder="email"
+                
               />
               <br />
               <label>Password</label>
               <br />
-              <input
+              <Input
                 value={pass}
                 onChange={(e) => {
                   setPass(e.target.value);
                 }}
                 type="password"
                 required
-                placeholder="password"
+              
               />
               <br />
               <button
@@ -120,9 +121,8 @@ const DIV = styled.div`
   width: 100%;
   font-family: "Poppins", sans-serif;
   /* height: 500px; */
-  padding-top: 50px;
+  padding: 5%;
   background-color: #02a95c;
-  padding-bottom: 50px;
   /* background-image: url('https://www.gofundme.com/en-gb/c/wp-content/uploads/sites/11/2021/04/hand-wing-people-love-heart-symbol-1361975-pxhere.com_.jpg?w=1024'); */
   div {
     width: 50%;
@@ -138,6 +138,7 @@ const DIV = styled.div`
     border: #02a95c 1px solid;
     padding: 10px;
     border-radius: 5px;
+    width:60%;
   }
   button {
     background-color: #02a95c;
@@ -150,7 +151,7 @@ const DIV = styled.div`
   }
   button:hover {
     background-color: lightgray;
-    border: 1px solid black;
+    border: 1px solid grey;
   }
   .link {
     color: #02a95c;
