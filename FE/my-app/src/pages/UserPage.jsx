@@ -99,6 +99,7 @@ export default function UserPage(){
     }
 
  const handleAddRequest=(payload)=>{
+      console.log(payload)
         axios.post("https://ivory-ox-kilt.cyclic.cloud/donation/create",payload,{
             headers:{
                 Authorization:`Bearer ${JSON.parse(localStorage.getItem("token"))}`
@@ -151,6 +152,7 @@ export default function UserPage(){
         })
     }
     
+      console.log(addFormData)
 //--> logout action
 //--> check if the crud operations are actually working
 //--> need username, org name in response after login
@@ -228,12 +230,12 @@ export default function UserPage(){
           <FormLabel>Description</FormLabel>
           </FormControl>
           <FormControl id="goal">
-          <Input type="number" value={addFormData.goal} onChange={(e)=>{setAddFormData({...formData,goal:e.target.value})}}/>
+          <Input type="number" value={addFormData.goal} onChange={(e)=>{setAddFormData({...addFormData,goal:e.target.value})}}/>
           <FormLabel>Target Amount</FormLabel>
           </FormControl>
           <FormControl id="category">
       <FormLabel>Category</FormLabel>
-      <Select value={addFormData.category} onChange={(e)=>{setAddFormData({...formData,category:e.target.value})}}>
+      <Select value={addFormData.category} onChange={(e)=>{setAddFormData({...addFormData,category:e.target.value})}}>
         <option value="">Select a Category</option>
         <option value="education">Education</option>
         <option value="disabilities">Disabilities</option>
@@ -244,7 +246,7 @@ export default function UserPage(){
       </Select>
     </FormControl>
     <FormControl id="image">
-          <Input type="text" value={addFormData.image} onChange={(e)=>{addFormData({...formData,image:e.target.value})}}/>
+          <Input type="text" value={addFormData.image} onChange={(e)=>{setAddFormData({...addFormData,image:e.target.value})}}/>
           <FormLabel>Image</FormLabel>
           </FormControl>
           <FormControl id="raised" isDisabled={true}>
