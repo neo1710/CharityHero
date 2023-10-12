@@ -9,12 +9,19 @@ import {
   AlertTitle,
   AlertDescription,
   Input,
+  InputRightElement,
   Spinner,
+  Heading,
+  Button,
+  InputGroup
 } from "@chakra-ui/react";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const [show, setShow] = useState(false)
+  const handleClick = () => setShow(!show)
+
   let navigate = useNavigate();
   let location = useLocation();
   console.log("loc", location);
@@ -68,12 +75,13 @@ export const Login = () => {
         <DIV>
           {/* {check.isLoading? <div><Spinner size={'xs'} /></div> :""} */}
           <div>
-            <h1>LOGIN HERE</h1>
+            <Heading id="head">LOGIN HERE</Heading>
             <br />
             <form>
               <label>Email</label>
               <br />
               <Input
+              className="Input"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -85,21 +93,31 @@ export const Login = () => {
               <br />
               <label>Password</label>
               <br />
-              <Input
+              
+              <div className="pass"><Input
+               className="InputP"
                 value={pass}
                 onChange={(e) => {
                   setPass(e.target.value);
                 }}
-                type="password"
+                type={show?"text":"password"}
                 required
               
-              />
+              ></Input>
+              <Button variant={"ghost"} className="passB" h='1.75rem' onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+              </div>
+               
+        
+      
               <br />
               <button
                 type="submit"
                 onClick={(e) => {
                   doit(e);
                 }}
+                className="subB"
               >
                 SUBMIT
               </button>
@@ -119,6 +137,7 @@ export const Login = () => {
 
 const DIV = styled.div`
   width: 100%;
+  display: flex;
   font-family: "Poppins", sans-serif;
   /* height: 500px; */
   padding: 5%;
@@ -130,17 +149,38 @@ const DIV = styled.div`
     margin: auto;
     background-color: white;
     padding: 20px;
+    
   }
-  h1 {
+  label{
+    color: #02a95c;
+    font-weight: bolder;
+  }
+  .pass{
+    width:60%;
+    border: #02a95c 1px solid;
+    padding: 0px;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    background: transparent;
+  }
+  #head {
     color: #02a95c;
   }
-  input {
+  .Input {
     border: #02a95c 1px solid;
     padding: 10px;
     border-radius: 5px;
     width:60%;
   }
-  button {
+  .InputP{
+    border: 0px;
+    padding: 10px;
+    border-radius: 5px;
+    width:80%;
+  }
+  .subB{
     background-color: #02a95c;
     margin-top: 10px;
     color: white;
@@ -149,11 +189,36 @@ const DIV = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
   }
-  button:hover {
+  .subB:hover {
     background-color: lightgray;
     border: 1px solid grey;
   }
   .link {
     color: #02a95c;
+  }
+
+  @media (min-width: 10px) and (max-width:500px) {
+    #head{
+      font-size: large;
+    }
+  Input {
+    border: #02a95c 1px solid;
+    border-radius: 5px;
+    width:60%;
+  }
+  div {
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+  }
+ 
+  }
+  .passB{
+    width: 20%;
+    padding: 6px;
+color: #02a95c;
+    margin-bottom: 0px;
   }
 `;

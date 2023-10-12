@@ -5,7 +5,8 @@ https://ivory-ox-kilt.cyclic.cloud
 
 Frontend link:https://charityhero.vercel.app/
 
-Dependencies in myapp:
+# Dependencies in myapp:
+
 redux 
 react-redux 
 redux-thunk 
@@ -16,6 +17,12 @@ styled component
 @chakra-ui/react @emotion/react @emotion/styled framer-motion
  @chakra-ui/icons
  moment
+
+ # Tech Stacks
+
+ FrontEnd :-React, Redux, Chakra UI, Styled Component, React Router.
+
+ BackEnd :-Node.js, Express, Mongoose , MongoDB  
 
 # About
 This project is based on a website where we can donate to a charity and also make a charity request by making an account for this website.
