@@ -4,7 +4,7 @@ import { ArrowForwardIcon, ArrowBackIcon } from '@chakra-ui/icons';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
+import { useMediaQuery } from "@chakra-ui/react";
 const ProductSlider = () => {
     const NextArrow = ({ className, onClick }) => {
         return (
@@ -21,10 +21,11 @@ const ProductSlider = () => {
           </div>
         );
       };
+      const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   const settings = {
     speed: 1000,
     autoplaySpeed: 2000,
-    slidesToShow: 4,
+    slidesToShow:isLargerThan768 ? 4 : 2,
     swipeToSlide: true,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
@@ -78,7 +79,7 @@ const ProductSlider = () => {
   ];
 
   return (
-    <Box className="product" ml={{ base: '0', sm: '150px' }} width={{ base: '100%', sm: '80%' }}>
+    <Box className="product"  ml={{ base: "30px", md: "150px" }} width= '80%' >
       <Slider {...settings}>
         {data.map((item, i) => (
           <Box key={i}  padding={{ base: '10px', sm: '20px' }}>
