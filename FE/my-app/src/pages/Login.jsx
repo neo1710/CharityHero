@@ -74,7 +74,13 @@ export const Login = () => {
       ) : (
         <DIV>
           {/* {check.isLoading? <div><Spinner size={'xs'} /></div> :""} */}
+        
           <div>
+          {/* {check.isError? <Alert  position={'fixed'} status='error'>
+  <AlertIcon />
+  <AlertTitle>Login Failed!</AlertTitle>
+  <AlertDescription>Wrong Credentials.</AlertDescription>
+</Alert>:""} */}
             <Heading id="head">LOGIN HERE</Heading>
             <br />
             <form>
@@ -95,7 +101,7 @@ export const Login = () => {
               <br />
               
               <div className="pass"><Input
-               className="InputP"
+               className="InputP Input"
                 value={pass}
                 onChange={(e) => {
                   setPass(e.target.value);
@@ -182,7 +188,6 @@ const DIV = styled.div`
   }
   .subB{
     background-color: #02a95c;
-    margin-top: 10px;
     color: white;
     padding: 5px;
     border: 1px lightgreen solid;
@@ -201,7 +206,7 @@ const DIV = styled.div`
     #head{
       font-size: large;
     }
-  Input {
+  .Input {
     border: #02a95c 1px solid;
     border-radius: 5px;
     width:60%;

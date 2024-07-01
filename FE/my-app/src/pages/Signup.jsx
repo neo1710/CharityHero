@@ -15,8 +15,8 @@ export const Signup=()=>{
 const DIV=styled.div`
 width :100% ;
 font-family: 'Poppins', sans-serif;
-height: 500px;
 padding-top:100px;
+padding-bottom: 50px;
 background-color: #02a95c;
 /* background-image: url('https://mir-s3-cdn-cf.behance.net/projects/808/f3eb58157538329.Y3JvcCwxMDA3LDc4OCwxOTcsMA.jpg'); */
 `

@@ -7,7 +7,9 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-  Spinner
+  Spinner,
+  Input,
+  Heading
 } from '@chakra-ui/react'
 
   export const SigninForm=()=>{
@@ -48,7 +50,7 @@ setload(false)
   console.log({name,email,pass,org});
 
     return (<>
-      { load?<Spinner size='xl' />:   <DIV>
+      { load?<Spinner size='xl' />:   <DIV className='div'>
        {bool? <Alert
         status='success'
         variant='subtle'
@@ -66,21 +68,21 @@ setload(false)
           Thanks for Signing up.
         </AlertDescription>
       
-      </Alert> : <div>
-            <h1>Register Here</h1><br />
+      </Alert> : <div >
+            <Heading id="head">Register Here</Heading><br />
 <form >
     <label>Name</label><br />
-<input value={name} onChange={(e)=>{setName(e.target.value)}}
-type="text" required placeholder="name"/><br />
+<Input  className='Input' value={name} onChange={(e)=>{setName(e.target.value)}}
+type="text" required /><br />
 <label>Email</label><br />
-         <input value={email} onChange={(e)=>{setEmail(e.target.value)}}
-         type="text" required placeholder="email"/><br />
+         <Input  className='Input' value={email} onChange={(e)=>{setEmail(e.target.value)}}
+         type="text" required /><br />
          <label >Password</label><br />
-         <input value={pass} onChange={(e)=>{setPass(e.target.value)}}
-         type="password" required placeholder="password"/><br />
+         <Input  className='Input' value={pass} onChange={(e)=>{setPass(e.target.value)}}
+         type="password" required /><br />
          <label>Organization</label><br />
-         <input value={org} onChange={(e)=>{setOrg(e.target.value)}}
-         type="text" required placeholder="organization"/><br />
+         <Input className='Input' value={org} onChange={(e)=>{setOrg(e.target.value)}}
+         type="text" required /><br />
          <button type='submit' onClick={(e)=>{signin(e)}}>SUBMIT</button>
 </form>
 </div>}
@@ -97,10 +99,19 @@ box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 margin: auto;
 background-color: white;
 padding: 20px;
-input{
-   border :#02a95c 1px solid ;
-  
-}
+#head {
+    color: #02a95c;
+  }
+  label{
+    color: #02a95c;
+    font-weight: bolder;
+  }
+.Input {
+    border: #02a95c 1px solid;
+    padding: 10px;
+    border-radius: 5px;
+    width:60%;
+  }
 h1{
   color:#02a95c;
 }
@@ -115,4 +126,22 @@ button:hover{
     background-color: lightgray;
     border:1px solid black;
 }
+@media (min-width: 10px) and (max-width:500px) {
+    #head{
+      font-size: large;
+    }
+  .Input {
+    border: #02a95c 1px solid;
+    border-radius: 5px;
+    width:60%;
+  }
+  .div {
+    width: 70%;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+  }
+ 
+  }
   `
