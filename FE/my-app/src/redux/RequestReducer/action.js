@@ -31,7 +31,7 @@ export const getDonationRequestData=(payload)=> async (dispatch)=>{
     console.log(queryObj)
     dispatch({type:DONATION_REQUEST})
     try {
-        await axios.get(`https://ivory-ox-kilt.cyclic.cloud/donation/request${payload.category.length>0?`?category=${JSON.stringify(payload.category)}`:""}`,{params:{
+        await axios.get(`https://charityherobackend.onrender.com/donation/request${payload.category.length>0?`?category=${JSON.stringify(payload.category)}`:""}`,{params:{
             ...queryObj
         }}).then((res)=>{
             console.log(res)
@@ -45,7 +45,7 @@ export const getDonationRequestData=(payload)=> async (dispatch)=>{
 }
 
 export const PostDonationData=payload=> dispatch=>{
-    axios.post("https://ivory-ox-kilt.cyclic.cloud/history/create",payload).then(res=>{
+    axios.post("https://charityherobackend.onrender.com/history/create",payload).then(res=>{
       console.log(res);
       dispatch({type:DONATED,payload:{amount:res.data.amount,id:res.data._id}})
    }).catch(err=>{

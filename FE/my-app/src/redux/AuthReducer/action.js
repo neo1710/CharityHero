@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const loginReq=(data)=>(dispatch)=>{
 dispatch({type:"LOGIN_REQUEST"});
-axios.post(`https://ivory-ox-kilt.cyclic.cloud/user/login`,data).then((res)=>{
+axios.post(`https://charityherobackend.onrender.com/user/login`,data).then((res)=>{
  console.log(res);   
 dispatch({type:"LOGIN_SUCCESS",payload:res.data});
 localStorage.setItem("token",JSON.stringify(res.data.token));
@@ -17,7 +17,7 @@ console.log(err);
 export const logout=()=>(dispatch)=>{
     dispatch({type:"LOGIN_REQUEST"});
    let token= localStorage.getItem('token');
-axios.get(`https://ivory-ox-kilt.cyclic.cloud/user/logout`,{
+axios.get(`https://charityherobackend.onrender.com/user/logout`,{
     headers:{Authorization:`Bearer ${token}`}
 }).then((res)=>{
  console.log(res);   
