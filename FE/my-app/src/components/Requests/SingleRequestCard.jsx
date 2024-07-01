@@ -28,7 +28,7 @@ export default function SingleRequestCard(){
     useEffect(()=>{
 
         if(reqData.length === 0){
-            axios.get("https://ivory-ox-kilt.cyclic.cloud/donation/request").then((res)=>{
+            axios.get("https://charityherobackend.onrender.com/donation/request").then((res)=>{
                // console.log(res)
                 res.data?.data?.forEach((ele)=>{
                     if(ele._id===id){
@@ -50,7 +50,7 @@ export default function SingleRequestCard(){
     },[id,reqData])
 
     const getDonationHistory=(reqID)=>{
-        axios.get(`https://ivory-ox-kilt.cyclic.cloud/history/get/${reqID}`).then((res)=>{
+        axios.get(`https://charityherobackend.onrender.com/history/get/${reqID}`).then((res)=>{
             console.log(res,"history")
             getTimePassed(res.data)
             setHistoryData(res.data)

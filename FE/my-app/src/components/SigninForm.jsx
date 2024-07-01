@@ -31,7 +31,7 @@ function signin(e){
     e.preventDefault();
 let data={email,password:pass,organization:org,name};
 setload(true);
-  axios.post(`https://ivory-ox-kilt.cyclic.cloud/user/register`,data).then((res)=>{
+  axios.post(`https://charityherobackend.onrender.com/user/register`,data).then((res)=>{
 console.log(res);
 setBool(true);
 setload(false)
